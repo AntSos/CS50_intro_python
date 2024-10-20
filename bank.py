@@ -1,15 +1,24 @@
 def main():
 
-    greeting = input("Greeting: ").lower().replace(" ", "")
+    greeting = input("Greeting: ")
 
-    if greeting[:5] == "hello":
-        print("$0")
+    cash = value(greeting)
+
+    print(f"${cash}")
+
+def value(greeting):
+
+    greeting = greeting.lower().replace(" ", "")
+
+    if "hello" in greeting:
+        return 0
     elif greeting[0] == "h":
-        print("$20")
+        return 20
     else:
-        print("$100")
+        return 100
 
 
 
 if __name__=="__main__":
     main()
+

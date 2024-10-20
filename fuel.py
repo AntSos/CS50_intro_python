@@ -1,8 +1,14 @@
 def main():
 
+    fraction_str = input("Fraction: ")
+    percent = convert(fraction_str)
+    result = gauge(percent)
+    print(result)
+
+def convert(fraction_str):
+
     while True:
 
-        fraction_str = input("Fraction: ")
         fraction_list = fraction_str.split("/")
 
         try:
@@ -12,24 +18,28 @@ def main():
             result = x / y
 
             if result <= 1:
-                break
+                percent = round((result) * 100)
+                return percent
 
-        except ValueError:
-            pass
+            else:
+                fraction_str = input("Fraction: ")
+                pass
 
-        except ZeroDivisionError:
-            pass
+        except (ValueError, ZeroDivisionError):
+            raise
 
-    percent = round((result) * 100)
 
-    if percent <= 1:
-        print("E")
+def gauge(percentage):
 
-    elif percent >= 99:
-        print("F")
+    if percentage <= 1:
+        return "E"
+
+    elif percentage >= 99:
+        return "F"
 
     else:
-        print(f"{percent}%")
+        return f"{percentage}%"
 
 if __name__=="__main__":
     main()
+
